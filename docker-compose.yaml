@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  postbd:
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    container_name: 'postbd'
+    restart: always
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+
+volumes:
+  pg-data:
