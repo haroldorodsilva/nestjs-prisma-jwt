@@ -1,9 +1,16 @@
-FROM node:16-alpine3.11
-
-RUN apk add --no-cache bash
-
-RUN npm install -g @nestjs/cli@8.0.0
-
-USER node
+FROM node:16-alpine
 
 WORKDIR /home/node/app
+
+COPY package*.json ./
+COPY prisma ./prisma/
+
+RUN npm install
+
+COPY . ./
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD [ "npm", "run", "start:prod" ]

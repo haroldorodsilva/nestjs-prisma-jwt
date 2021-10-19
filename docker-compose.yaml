@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+     
   postbd:
     image: postgres:alpine
     ports:

@@ -11,8 +11,8 @@ async function bootstrap() {
   prismaService.enableShutdownHooks(app);
 
   const config = new DocumentBuilder()
-    .setTitle("NutriAPI")
-    .setDescription("Api para atendimento nutricional")
+    .setTitle("Bolerplate")
+    .setDescription("Service demo boilerplate")
     .setVersion("1.0")
     .addTag("nutrition")
     .build();
@@ -22,7 +22,8 @@ async function bootstrap() {
 
   app.useGlobalPipes(...[new YupValidationPipe()]);
 
-  await app.listen(3000);
+  app.enableCors();
+  await app.listen(process.env.PORT || 3000);
 }
 
 bootstrap();
